@@ -11,10 +11,10 @@
 </template>
 
 <script>
-import url from '../network/serve'
+import url from '../../../network/serve'
 
 export default {
-  name: "TwoDetail",
+  name: "EmrDetail",
   data() {
     return {
       list: []

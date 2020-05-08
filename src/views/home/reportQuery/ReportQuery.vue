@@ -40,10 +40,10 @@
 </template>
 
 <script>
-import url from '../network/serve'
+import url from '../../../network/serve'
 
 export default {
-  name: "Fore",
+  name: "ReportQuery",
   data() {
     return {
       checked: "",
@@ -65,7 +65,7 @@ export default {
   methods: {
     de(id) {
       this.$router.push({
-        name: "Detail",
+        name: "ReportQueryDetail",
         query: {
           id: id
         }

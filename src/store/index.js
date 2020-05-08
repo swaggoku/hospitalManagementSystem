@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import url from '../network/request'
+import url from '../network/serve'
 // axios.defaults.baseURL = "http://www.kuaiyunwl.com:9906";
 axios.defaults.baseURL = "http://39.97.245.166:9900";
 
@@ -34,7 +34,7 @@ export default new Vuex.Store({
     login(store, a) {
       return new Promise(callback => {
         axios.post(url.LOGIN, a).then(res => {
-          // console.log(res);
+          console.log(res);
           if (res.data.suc) {
             // name和token 存到state和游览器中
             store.commit('setToken', res.data.result.token);

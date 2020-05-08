@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import url from '../network/serve'
+import url from '../../../network/serve'
 
 export default {
-  name: "Check",
+  name: "ReportQueryCheck",
   data() {
     return {
       is: false
@@ -43,7 +43,7 @@ export default {
   width: 300px;
   height: 150px;
   border: 1px solid #cdcdcd;
-  background-image: url("../assets/logo.png");
+  background-image: url("../../../assets/logo.png");
   background-size: 30%;
   background-repeat: no-repeat;
   background-position: center;

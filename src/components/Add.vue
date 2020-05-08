@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import url from '../network/serve'
+import url from "../network/serve";
 
 export default {
   name: "Add",
@@ -40,11 +40,7 @@ export default {
   },
   methods: {
     add() {
-      var token = sessionStorage.getItem("token");
-      var info =
-        "authorization=" +
-        token +
-        "&conNo=111115&phone=18042845678&deId=1&docId=1&comment=qwwe";
+      var info = "&conNo=111115&phone=18042885678&deId=1&docId=1&comment=qwwe";
       this.axios.post(url.ADD_MED, info).then(res => {
         console.log(res);
       });

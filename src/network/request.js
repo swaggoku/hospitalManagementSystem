@@ -26,7 +26,7 @@ instance.interceptors.request.use(function (config) {
     duration: 0
   });
 
-  console.log("开始发请求", config);
+  // console.log("开始发请求", config);
   return config;
 }, function (error) {
   // 对请求错误做些什么

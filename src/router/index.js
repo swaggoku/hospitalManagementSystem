@@ -4,14 +4,16 @@ import store from '../store/index'
 
 const Home = () => import('../views/home/Home.vue')
 const Index = () => import('../views/index/Index.vue')
-const One = () => import('../components/One.vue')
-const Two = () => import('../components/Two.vue')
-const Three = () => import('../components/Three.vue')
-const Fore = () => import('../components/Fore.vue')
-const Detail = () => import('../components/Detail.vue')
-const TwoDetail = () => import('../components/TwoDetail.vue')
-const Check = () => import('../components/Check.vue')
+
+const MyPatient = () => import('../views/home/myPatient/MyPatient.vue')
+const Emr = () => import('../views/home/emr/Emr.vue')
+const EmrDetail = () => import('../views/home/emr/EmrDetail.vue')
+const InHosCon = () => import('../views/home/inHosCon/InHosCon.vue')
+const ReportQuery = () => import('../views/home/reportQuery/ReportQuery.vue')
+const ReportQueryDetail = () => import('../views/home/reportQuery/ReportQueryDetail.vue')
+const ReportQueryCheck = () => import('../views/home/reportQuery/ReportQueryCheck.vue')
 const Add = () => import('../components/Add.vue')
+const OutHosCon = () => import('../views/home/outHosCon/OutHosCon.vue')
 
 Vue.use(VueRouter)
 
@@ -29,43 +31,48 @@ const routes = [{
     component: Home,
     children: [{
         path: '/',
-        redirect: '/one'
+        redirect: '/myPatient'
       },
       {
-        path: '/one',
-        component: One
+        path: '/myPatient',
+        component: MyPatient
       },
       {
-        path: '/two',
-        component: Two
+        path: '/emr',
+        component: Emr
       },
       {
-        path: '/three',
-        component: Three
+        path: '/emrDetail',
+        component: EmrDetail,
+        name: 'EmrDetail'
       },
       {
-        path: '/fore',
-        component: Fore
+        path: '/inHosCon',
+        component: InHosCon
       },
       {
-        path: '/check',
-        component: Check,
-        name: 'Check'
+        path: '/reportQuery',
+        component: ReportQuery
       },
       {
-        path: '/twoDetail',
-        component: TwoDetail,
-        name: 'TwoDetail'
+        path: '/reportQueryCheck',
+        component: ReportQueryCheck,
+        name: 'ReportQueryCheck'
       },
       {
-        path: '/Detail',
-        component: Detail,
-        name: 'Detail'
+        path: '/reportQueryDetail',
+        component: ReportQueryDetail,
+        name: 'ReportQueryDetail'
       },
       {
-        path: '/Add',
+        path: '/add',
         component: Add,
         name: 'Add'
+      },
+      {
+        path: '/outHosCon',
+        component: OutHosCon,
+        name: 'OutHosCon'
       }
     ]
   },
@@ -80,7 +87,7 @@ const router = new VueRouter({
 // 全局导航守卫
 router.beforeEach((to, from, next) => {
 
-  if (to.path == "/one") {
+  if (to.path == "/myPatient") {
     sessionStorage.setItem("active", to.path);
     sessionStorage.setItem("title", "我的病人");
   }

@@ -6,19 +6,19 @@
         <img src="../../assets/logo.png" alt />
       </div>
       <ul>
-        <li @click="change('/one','我的病人')" :class="{active: current == '/one'}">
+        <li @click="change('/myPatient','我的病人')" :class="{active: current == '/myPatient'}">
           <van-icon class="vicon" name="friends" />我的病人
         </li>
-        <li @click="change('/two','电子病历')" :class="{active: current == '/two'}">
+        <li @click="change('/emr','电子病历')" :class="{active: current == '/emr'}">
           <van-icon class="vicon" name="label" />电子病历
         </li>
-        <li @click="change('/three','住院管理')" :class="{active: current == '/three'}">
+        <li @click="change('/inHosCon','住院管理')" :class="{active: current == '/inHosCon'}">
           <van-icon class="vicon" name="todo-list" />住院管理
         </li>
-        <li @click="change('/fore','报告查询')" :class="{active: current == '/fore'}">
+        <li @click="change('/reportQuery','报告查询')" :class="{active: current == '/reportQuery'}">
           <van-icon class="vicon" name="search" />报告查询
         </li>
-        <li @click="change('/five','出院管理')" :class="{active: current == '/five'}">
+        <li @click="change('/outHosCon','出院管理')" :class="{active: current == '/outHosCon'}">
           <van-icon class="vicon" name="notes-o" />出院管理
         </li>
         <li @click="change('/six','处方管理')" :class="{active: current == '/six'}">
@@ -62,7 +62,7 @@ export default {
   name: "Home",
   data() {
     return {
-      current: sessionStorage.getItem("active") || "/one",
+      current: sessionStorage.getItem("active") || "/myPatient",
       title: sessionStorage.getItem("title") || "我的病人",
       addbingli: sessionStorage.getItem('addbingli') || false
     };
@@ -73,39 +73,39 @@ export default {
     }
   },
   // 监听地址栏路由的变化，修改左侧选项卡高亮状态
-  watch: {
-    '$route'(to, from) {
-      if (to.path == "/one") {
-        this.current = to.path;
-        sessionStorage.setItem("active", to.path);
-        this.title = "我的病人";
-        sessionStorage.setItem("title", "我的病人");
-        this.addbingli = false;
-        sessionStorage.setItem("addbingli", false);
-      } else if (to.path == "/two") {
-        this.current = to.path;
-        sessionStorage.setItem("active", to.path);
-        this.title = "电子病历";
-        sessionStorage.setItem("title", "电子病历");
-        this.addbingli = true;
-        sessionStorage.setItem("addbingli", true);
-      } else if (to.path == "/three") {
-        this.current = to.path;
-        sessionStorage.setItem("active", to.path);
-        this.title = "住院管理";
-        sessionStorage.setItem("title", "住院管理");
-        this.addbingli = false;
-        sessionStorage.setItem("addbingli", false);
-      } else if (to.path == "/fore") {
-        this.current = to.path;
-        sessionStorage.setItem("active", to.path);
-        this.title = "报告查询";
-        sessionStorage.setItem("title", "报告查询");
-        this.addbingli = false;
-        sessionStorage.setItem("addbingli", false);
-      }
-    }
-  },
+  // watch: {
+  //   '$route'(to, from) {
+  //     if (to.path == "/one") {
+  //       this.current = to.path;
+  //       sessionStorage.setItem("active", to.path);
+  //       this.title = "我的病人";
+  //       sessionStorage.setItem("title", "我的病人");
+  //       this.addbingli = false;
+  //       sessionStorage.setItem("addbingli", false);
+  //     } else if (to.path == "/two") {
+  //       this.current = to.path;
+  //       sessionStorage.setItem("active", to.path);
+  //       this.title = "电子病历";
+  //       sessionStorage.setItem("title", "电子病历");
+  //       this.addbingli = true;
+  //       sessionStorage.setItem("addbingli", true);
+  //     } else if (to.path == "/three") {
+  //       this.current = to.path;
+  //       sessionStorage.setItem("active", to.path);
+  //       this.title = "住院管理";
+  //       sessionStorage.setItem("title", "住院管理");
+  //       this.addbingli = false;
+  //       sessionStorage.setItem("addbingli", false);
+  //     } else if (to.path == "/fore") {
+  //       this.current = to.path;
+  //       sessionStorage.setItem("active", to.path);
+  //       this.title = "报告查询";
+  //       sessionStorage.setItem("title", "报告查询");
+  //       this.addbingli = false;
+  //       sessionStorage.setItem("addbingli", false);
+  //     }
+  //   }
+  // },
   methods: {
     logOut() {
       this.$store.dispatch("logOut").then(res => {

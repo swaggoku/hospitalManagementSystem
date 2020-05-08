@@ -6,7 +6,7 @@
 
 <script>
 export default{
-  name:"Three"
+  name:"InHosCon"
 
 }
 </script>

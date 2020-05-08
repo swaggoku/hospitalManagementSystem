@@ -48,10 +48,10 @@
 </template>
 
 <script>
-import url from '../network/request'
+import url from '../../../network/serve'
 
 export default {
-  name: "Detail",
+  name: "ReportQueryDetail",
   data() {
     return {
       list: [],

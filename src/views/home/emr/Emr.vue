@@ -49,10 +49,10 @@
 </template>
 
 <script>
-import url from "../network/serve";
+import url from "../../../network/serve";
 
 export default {
-  name: "Two",
+  name: "Emr",
   data() {
     return {
       list: [],
@@ -110,7 +110,7 @@ export default {
     // 详情页跳转
     detail(meId) {
       this.$router.push({
-        name: "TwoDetail",
+        name: "EmrDetail",
         query: {
           meId: meId
         }

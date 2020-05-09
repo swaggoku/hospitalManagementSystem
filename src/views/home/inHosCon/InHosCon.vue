@@ -12,7 +12,7 @@
           <th>姓名</th>
           <th>性别</th>
           <th>年龄</th>
-          <th>主治医生</th>
+          <th>病房号</th>
           <th>就诊时间</th>
           <th>操作</th>
         </tr>
@@ -26,7 +26,7 @@
           <td>{{item.conName}}</td>
           <td>{{item.sex = 1 ? '男':'女'}}</td>
           <td>{{item.age}}</td>
-          <td>{{item.deId}}</td>
+          <td>2056</td>
           <td>{{item.seektime}}</td>
           <td>
             <van-button @click="detail(item.meId)" type="primary" size="mini">解决问题</van-button>

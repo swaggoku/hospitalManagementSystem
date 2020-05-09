@@ -14,7 +14,7 @@
           <th>年龄</th>
           <th>问题描述</th>
           <th>主要症状</th>
-          <th>所用药物</th>
+          <th>检查时间</th>
           <th>操作</th>
         </tr>
       </thead>
@@ -29,19 +29,20 @@
           <td>{{item.age}}</td>
           <td>感冒发烧流鼻涕</td>
           <td>头痛，恶心，食欲不振</td>
-          <td>红霉素，阿莫西林</td>
+          <td>{{item.seektime}}</td>
           <td>
             <!-- <van-button @click="detail(item.meId)" type="primary" size="mini">查看详情</van-button> -->
             <van-icon class="icon" size="15px" @click="detail(item.meId)" name="edit" />&nbsp;
             <van-icon name="setting" size="15px" />
             <van-popup class="content" v-model="show">
-              <h4>修改处方</h4>
+              <h3>修改处方</h3>
+              <span @click="hidden" class="cha">×</span>
               <p>处方:</p>
-              <textarea name id cols="30" rows="10">
-                左眼挫伤、继发性青光眼
+              <textarea v-model="con" name id cols="30" rows="10">
+                <!-- 左眼挫伤、继发性青光眼 -->
               </textarea><br>
-              <van-button type="primary" size="mini">确定</van-button>
-              <van-button type="primary" size="mini">取消</van-button>
+              <van-button @click="sure" type="primary" size="mini">确定</van-button>
+              <van-button @click="hidden" type="primary" size="mini">取消</van-button>
             </van-popup>
           </td>
         </tr>
@@ -75,7 +76,9 @@ export default {
       alls: 100,
       conName: "",
       seekTime: "",
-      show: false
+      show: false,
+      con: "",
+      meId: ''
     };
   },
   created() {
@@ -97,7 +100,7 @@ export default {
         if (!res.data.suc) {
           this.$router.push("/index");
         } else {
-          // console.log(res);
+          console.log(res);
           res.data.result.forEach((item, index, arr) => {
             this.$set(item, "isCheck", false);
           });
@@ -122,9 +125,28 @@ export default {
       this.getListCount();
       this.conName = "";
     },
-    // 详情页跳转
+    // 弹框
     detail(meId) {
+      this.meId = meId;
+      this.list.filter((item,index,arr) => {
+        if(item.meId == meId) {
+          this.con = item.seektime;
+          return;
+        }
+      })
       this.show = true;
+    },
+    hidden() {
+      this.show = false
+    },
+    sure(){
+      this.list.filter((item,index,arr) => {
+        if(item.meId == this.meId) {
+          item.seektime = this.con;
+          return;
+        }
+      })
+      this.show = false
     },
     // 单选
     change(e) {
@@ -217,7 +239,16 @@ th {
 }
 .content {
   width: 300px;
-  height: 300px;
+  height: 250px;
   border: 1px solid white;
+}
+.content .cha {
+  width: 30px;
+  height: 30px;
+  font-size: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
 }
 </style>

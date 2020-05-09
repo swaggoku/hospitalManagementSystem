@@ -29,13 +29,16 @@
           <td>{{item.deId}}</td>
           <td>{{item.seektime}}</td>
           <td>
-            <van-button @click="detail(item.meId)" type="primary" size="mini">查看详情</van-button>
+            <!-- <van-button @click="detail(item.meId)" type="primary" size="mini">查看详情</van-button> -->
+            <van-icon class="icon" size="15px" @click="detail(item.meId)" name="edit" />&nbsp;
+            <van-icon name="setting" size="15px" />
           </td>
         </tr>
       </tbody>
     </table>
     <!-- 分页 -->
     <van-pagination
+      class="page"
       v-model="currentPage"
       @change="jump()"
       :total-items="alls"
@@ -44,7 +47,7 @@
       force-ellipses
     />
     <!-- 批量删除 -->
-    <van-button @click="del" type="primary" size="mini">批量删除</van-button>
+    <van-button class="del" @click="del" type="primary" size="mini">批量删除</van-button>
   </div>
 </template>
 
@@ -82,7 +85,7 @@ export default {
         if (!res.data.suc) {
           this.$router.push("/index");
         } else {
-          console.log(res);
+          // console.log(res);
           res.data.result.forEach((item, index, arr) => {
             this.$set(item, "isCheck", false);
           });
@@ -111,9 +114,7 @@ export default {
     detail(meId) {
       this.$router.push({
         name: "OutHosConDetail",
-        query: {
-          
-        }
+        query: {}
       });
     },
     // 单选
@@ -192,5 +193,17 @@ th {
   border: 1px solid #cdcdcd;
   margin-left: 10px;
   margin-bottom: 5px;
+}
+.page {
+  width: 300px;
+  float: left;
+}
+.del {
+  margin-left: 20px;
+  margin-top: 5px;
+  float: left;
+}
+.icon {
+  cursor: pointer;
 }
 </style>

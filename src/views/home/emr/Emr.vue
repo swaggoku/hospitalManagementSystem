@@ -36,6 +36,7 @@
     </table>
     <!-- 分页 -->
     <van-pagination
+      class="page"
       v-model="currentPage"
       @change="jump()"
       :total-items="alls"
@@ -44,7 +45,7 @@
       force-ellipses
     />
     <!-- 批量删除 -->
-    <van-button @click="del" type="primary" size="mini">批量删除</van-button>
+    <van-button class="del" @click="del" type="primary" size="small">批量删除</van-button>
   </div>
 </template>
 
@@ -165,6 +166,7 @@ export default {
 
 <style scoped>
 .emr {
+  /* position: relative; */
   padding: 30px;
 }
 table {
@@ -192,5 +194,15 @@ th {
   border: 1px solid #cdcdcd;
   margin-left: 10px;
   margin-bottom: 5px;
+}
+.page {
+  
+  width: 300px;
+  float: left;
+}
+.del {
+  margin-left: 20px;
+  margin-top: 5px;
+  float: left;
 }
 </style>

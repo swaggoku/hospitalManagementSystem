@@ -150,9 +150,7 @@ export default {
   padding: 0;
 }
 .home {
-  /* border-radius: 40px; */
   height: 100%;
-  /* border: 1px solid #42b983; */
   display: flex;
   width: 99%;
   height: 99%;
@@ -164,7 +162,7 @@ export default {
   height: 100%;
   width: 250px;
   position: relative;
-  background-color: rgba(255, 255, 255, .5);
+  background-color: rgba(255, 255, 255, .7);
 }
 .image {
   width: 100%;
@@ -208,7 +206,6 @@ export default {
 .right {
   width: 100%;
   height: 100%;
-  /* border-left: 2px solid #42b983; */
   position: relative;
 }
 .name {
@@ -230,9 +227,10 @@ export default {
 .view {
   width: 95%;
   height: 80%;
-  box-shadow: 1px 1px 10px 1px rgba(100, 100, 100, 0.8);
+  box-shadow: 0 0 1px 1px rgba(200, 200, 200, 0.8);
   margin: 0 auto;
   margin-top: 60px;
+  background-color: rgba(255, 255, 255, .7);  
 }
 .nav-bar {
   width: 100%;

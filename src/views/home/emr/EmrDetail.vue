@@ -28,7 +28,7 @@ export default {
   created() {
     var meId = this.$route.query.meId;
     var token = sessionStorage.getItem("token");
-    var info = "authorization=" + token + "&meId=" + meId;
+    var info = "&meId=" + meId;
     this.axios.post(url.GET_MED_LIST_DETAIL, info).then(res => {
       if (!res.data.suc) {
         this.$router.push("/index");

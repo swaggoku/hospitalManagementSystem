@@ -21,13 +21,16 @@
         <li @click="change('/outHosCon','出院管理')" :class="{active: current == '/outHosCon'}">
           <van-icon class="vicon" name="notes-o" />出院管理
         </li>
-        <li @click="change('/six','处方管理')" :class="{active: current == '/six'}">
+        <li
+          @click="change('/prescriptionCon','处方管理')"
+          :class="{active: current == '/prescriptionCon'}"
+        >
           <van-icon class="vicon" name="notes-o" />处方管理
         </li>
-        <li @click="change('/seven','就诊咨询')" :class="{active: current == '/seven'}">
+        <li @click="change('/doctorConsult','就诊咨询')" :class="{active: current == '/doctorConsult'}">
           <van-icon class="vicon" name="notes-o" />就诊咨询
         </li>
-        <li @click="change('/eight','个人管理')" :class="{active: current == '/eight'}">
+        <li @click="change('/profile','个人管理')" :class="{active: current == '/profile'}">
           <van-icon class="vicon" name="notes-o" />个人管理
         </li>
       </ul>
@@ -43,8 +46,8 @@
       <div class="name">
         <p>{{title}}</p>
       </div>
-      <div class="add-icon">
-        <van-button @click="add()" v-show="addbingli" type="primary" size="mini">添加病人</van-button>
+      <div class="add-icon" v-show="addbingli">
+        <p @click="add()">添加病人</p>
       </div>
       <!-- 中间视图 -->
       <div class="view">
@@ -115,6 +118,27 @@ export default {
         sessionStorage.setItem("title", "出院管理");
         this.addbingli = false;
         sessionStorage.setItem("addbingli", false);
+      } else if (to.path == "/doctorConsult") {
+        this.current = to.path;
+        sessionStorage.setItem("active", to.path);
+        this.title = "就诊咨询";
+        sessionStorage.setItem("title", "出院管理");
+        this.addbingli = false;
+        sessionStorage.setItem("addbingli", false);
+      } else if (to.path == "/prescriptionCon") {
+        this.current = to.path;
+        sessionStorage.setItem("active", to.path);
+        this.title = "处方管理";
+        sessionStorage.setItem("title", "出院管理");
+        this.addbingli = false;
+        sessionStorage.setItem("addbingli", false);
+      } else if (to.path == "/profile") {
+        this.current = to.path;
+        sessionStorage.setItem("active", to.path);
+        this.title = "个人信息";
+        sessionStorage.setItem("title", "出院管理");
+        this.addbingli = false;
+        sessionStorage.setItem("addbingli", false);
       }
     }
   },
@@ -155,14 +179,14 @@ export default {
   width: 99%;
   height: 99%;
   margin: 0 auto;
-  background-image: url('../../assets/bg.jpg');
+  background-image: url("../../assets/bg.jpg");
   background-size: 100% 100%;
 }
 .left {
   height: 100%;
   width: 250px;
   position: relative;
-  background-color: rgba(255, 255, 255, .7);
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .image {
   width: 100%;
@@ -209,9 +233,10 @@ export default {
   position: relative;
 }
 .name {
+  margin-top: 15px;
   margin-left: 100px;
   float: left;
-  background-image: url('../../assets/title_bg.png');
+  background-image: url("../../assets/title_bg.png");
   background-size: 100% 90px;
   color: black;
   width: 200px;
@@ -221,6 +246,13 @@ export default {
 }
 .add-icon {
   float: left;
+  width: 200px;
+  height: 45px;
+  line-height: 45px;
+  font-weight: 600;
+  background-image: url("../../assets/title_bg.png");
+  background-size: 100% 90px;
+  background-position: 0 134px;
   margin-left: 10px;
   margin-top: 15px;
 }
@@ -230,7 +262,7 @@ export default {
   box-shadow: 0 0 1px 1px rgba(200, 200, 200, 0.8);
   margin: 0 auto;
   margin-top: 60px;
-  background-color: rgba(255, 255, 255, .7);  
+  background-color: rgba(255, 255, 255, 0.7);
 }
 .nav-bar {
   width: 100%;

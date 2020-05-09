@@ -1,5 +1,5 @@
 <template>
-  <div class="emr">
+  <div class="out-hos-con">
     <input class="in" @keydown.enter="search" v-model="conName" type="text" placeholder="请输入用户名" />
     <input class="in" v-model.trim="seekTime" type="text" placeholder="请输入就诊时间" />
     <table>
@@ -12,8 +12,9 @@
           <th>姓名</th>
           <th>性别</th>
           <th>年龄</th>
-          <th>主治医生</th>
-          <th>就诊时间</th>
+          <th>问题描述</th>
+          <th>主要症状</th>
+          <th>所用药物</th>
           <th>操作</th>
         </tr>
       </thead>
@@ -26,10 +27,22 @@
           <td>{{item.conName}}</td>
           <td>{{item.sex = 1 ? '男':'女'}}</td>
           <td>{{item.age}}</td>
-          <td>{{item.deId}}</td>
-          <td>{{item.seektime}}</td>
+          <td>感冒发烧流鼻涕</td>
+          <td>头痛，恶心，食欲不振</td>
+          <td>红霉素，阿莫西林</td>
           <td>
-            <van-button @click="detail(item.meId)" type="primary" size="mini">解决问题</van-button>
+            <!-- <van-button @click="detail(item.meId)" type="primary" size="mini">查看详情</van-button> -->
+            <van-icon class="icon" size="15px" @click="detail(item.meId)" name="edit" />&nbsp;
+            <van-icon name="setting" size="15px" />
+            <van-popup class="content" v-model="show">
+              <h4>修改处方</h4>
+              <p>处方:</p>
+              <textarea name id cols="30" rows="10">
+                左眼挫伤、继发性青光眼
+              </textarea><br>
+              <van-button type="primary" size="mini">确定</van-button>
+              <van-button type="primary" size="mini">取消</van-button>
+            </van-popup>
           </td>
         </tr>
       </tbody>
@@ -45,7 +58,7 @@
       force-ellipses
     />
     <!-- 批量删除 -->
-    <van-button class="del" @click="del" type="primary" size="small">批量删除</van-button>
+    <van-button class="del" @click="del" type="primary" size="mini">批量删除</van-button>
   </div>
 </template>
 
@@ -53,7 +66,7 @@
 import url from "../../../network/serve";
 
 export default {
-  name: "InHosCon",
+  name: "PrescriptionCon",
   data() {
     return {
       list: [],
@@ -61,7 +74,8 @@ export default {
       currentPage: 1,
       alls: 100,
       conName: "",
-      seekTime: ""
+      seekTime: "",
+      show: false
     };
   },
   created() {
@@ -83,7 +97,7 @@ export default {
         if (!res.data.suc) {
           this.$router.push("/index");
         } else {
-          console.log(res);
+          // console.log(res);
           res.data.result.forEach((item, index, arr) => {
             this.$set(item, "isCheck", false);
           });
@@ -110,7 +124,7 @@ export default {
     },
     // 详情页跳转
     detail(meId) {
-      
+      this.show = true;
     },
     // 单选
     change(e) {
@@ -160,8 +174,7 @@ export default {
 </script>
 
 <style scoped>
-.emr {
-  /* position: relative; */
+.out-hos-con {
   padding: 30px;
 }
 table {
@@ -191,7 +204,6 @@ th {
   margin-bottom: 5px;
 }
 .page {
-  
   width: 300px;
   float: left;
 }
@@ -199,5 +211,13 @@ th {
   margin-left: 20px;
   margin-top: 5px;
   float: left;
+}
+.icon {
+  cursor: pointer;
+}
+.content {
+  width: 300px;
+  height: 300px;
+  border: 1px solid white;
 }
 </style>

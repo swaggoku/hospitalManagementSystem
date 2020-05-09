@@ -15,6 +15,9 @@ const ReportQueryCheck = () => import('../views/home/reportQuery/ReportQueryChec
 const Add = () => import('../components/Add.vue')
 const OutHosCon = () => import('../views/home/outHosCon/OutHosCon.vue')
 const OutHosConDetail = () => import('../views/home/outHosCon/OutHosConDetail.vue')
+const PrescriptionCon = () => import('../views/home/prescriptionCon/PrescriptionCon.vue')
+const DoctorConsult = () => import('../views/home/doctorConsult/DoctorConsult.vue')
+const Profile = () => import('../views/home/profile/Profile.vue')
 
 Vue.use(VueRouter)
 
@@ -79,7 +82,22 @@ const routes = [{
         path: '/outHosConDetail',
         component: OutHosConDetail,
         name: 'OutHosConDetail'
-      }
+      },
+      {
+        path: '/doctorConsult',
+        component: DoctorConsult,
+        name: 'DoctorConsult'
+      },
+      {
+        path: '/prescriptionCon',
+        component: PrescriptionCon,
+        name: 'PrescriptionCon'
+      },
+      {
+        path: '/profile',
+        component: Profile,
+        name: 'Profile'
+      },
     ]
   },
 

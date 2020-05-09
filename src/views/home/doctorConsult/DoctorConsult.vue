@@ -53,7 +53,7 @@
 import url from "../../../network/serve";
 
 export default {
-  name: "InHosCon",
+  name: "DoctorConsult",
   data() {
     return {
       list: [],

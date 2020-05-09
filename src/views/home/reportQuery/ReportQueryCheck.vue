@@ -1,5 +1,5 @@
 <template>
-  <div id>
+  <div class="report-query-check">
     <h1>病历查看</h1>
     <div class="upload">
       <input type="file" accept="image/*" @change="upload($event)" />

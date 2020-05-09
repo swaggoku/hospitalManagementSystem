@@ -1,5 +1,5 @@
 <template>
-  <div class="two-detail">
+  <div class="emr-detail">
     <div></div>
     <div class="item" @click="check()" v-for="(item,index) in list" :key="index">
       <p>
@@ -48,7 +48,7 @@ export default {
   border: 1px solid black;
   cursor: pointer;
 }
-.two-detail {
+.emr-detail {
   width: 100%;
   height: 100%;
   padding: 25px;

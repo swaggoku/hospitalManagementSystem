@@ -1,5 +1,5 @@
 <template>
-  <div class="two">
+  <div class="emr">
     <input class="in" @keydown.enter="search" v-model="conName" type="text" placeholder="请输入用户名" />
     <input class="in" v-model.trim="seekTime" type="text" placeholder="请输入就诊时间" />
     <table>
@@ -164,7 +164,7 @@ export default {
 </script>
 
 <style scoped>
-.two {
+.emr {
   padding: 30px;
 }
 table {
@@ -177,7 +177,7 @@ table {
 
 th,
 td {
-  padding: 5px 14px;
+  padding: 8px 14px;
   border: 1px solid #e9e9e9;
   text-align: center;
 }

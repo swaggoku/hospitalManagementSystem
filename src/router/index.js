@@ -14,6 +14,7 @@ const ReportQueryDetail = () => import('../views/home/reportQuery/ReportQueryDet
 const ReportQueryCheck = () => import('../views/home/reportQuery/ReportQueryCheck.vue')
 const Add = () => import('../components/Add.vue')
 const OutHosCon = () => import('../views/home/outHosCon/OutHosCon.vue')
+const OutHosConDetail = () => import('../views/home/outHosCon/OutHosConDetail.vue')
 
 Vue.use(VueRouter)
 
@@ -73,6 +74,11 @@ const routes = [{
         path: '/outHosCon',
         component: OutHosCon,
         name: 'OutHosCon'
+      },
+      {
+        path: '/outHosConDetail',
+        component: OutHosConDetail,
+        name: 'OutHosConDetail'
       }
     ]
   },

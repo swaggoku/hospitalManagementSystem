@@ -1,5 +1,5 @@
 <template>
-  <div class="fore">
+  <div class="report-query">
     <table>
       <thead>
         <tr>
@@ -76,7 +76,7 @@ export default {
 </script>
 
 <style scoped>
-.fore {
+.report-query {
   padding: 30px;
 }
 table {

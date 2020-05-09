@@ -1,5 +1,5 @@
 <template>
-  <div class="detail">
+  <div class="report-query-detail">
     <div class="pp">
       <van-button class="btn" v-show="is" @click="change()" type="primary" size="mini">修改信息</van-button>
       <van-button class="btn" v-show="!is" @click="quxiao()" type="primary" size="mini">取消</van-button>
@@ -83,7 +83,7 @@ export default {
 </script>
 
 <style scoped>
-.detail {
+.report-query-detail {
   width: 100%;
   height: 100%;
   padding: 20px;

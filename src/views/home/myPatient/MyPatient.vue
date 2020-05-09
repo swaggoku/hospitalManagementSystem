@@ -1,5 +1,5 @@
 <template>
-  <div class="one">
+  <div class="my-patient">
     <form class="search" action>
       <van-search
         @keydown.enter="search()"
@@ -30,7 +30,7 @@
 import url from "../../../network/serve";
 
 export default {
-  name: "One",
+  name: "MyPatient",
   data() {
     return {
       list: [],
@@ -50,11 +50,11 @@ export default {
         if (!res.data.suc) {
           this.$router.push("/index");
         } else {
-          console.log(res.data.result);
           this.list = res.data.result;
         }
       });
     },
+    // 根据关键字搜索病人
     search() {
       var newList = [];
       this.list.forEach(item => {
@@ -69,7 +69,7 @@ export default {
 </script>
 
 <style scoped>
-.one ul li {
+.my-patient ul li {
   /* float: left; */
   width: 21%;
   height: 20%;
@@ -79,11 +79,11 @@ export default {
   margin-left: 30px;
   margin-top: 25px;
 }
-.one ul li p {
+.my-patient ul li p {
   font-size: 12px;
   line-height: 5px;
 }
-.one ul li img {
+.my-patient ul li img {
   float: left;
   width: 50px;
   height: 50px;

@@ -13,20 +13,17 @@ instance.defaults.baseURL = "http://39.97.245.166:9900";
 // axios拦截器
 instance.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
+  // console.log("请求开始" + config)
   var token = sessionStorage.getItem("token");
   if (config.method == 'post') {
     config.data += "&authorization=" + token
   } else if (config.method == 'get') {
     config.params.authorization = token
   }
-
   Toast.loading({
     message: '加载中...',
-
     duration: 0
   });
-
-  // console.log("开始发请求", config);
   return config;
 }, function (error) {
   // 对请求错误做些什么

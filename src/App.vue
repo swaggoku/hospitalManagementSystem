@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/index">Login</router-link> |
-      <router-link to="/home">Home</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
@@ -11,6 +7,8 @@
 <style>
 body,html {
   height: 100%;
+  min-width: 1100px;
+  min-height: 600px;
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -19,18 +17,5 @@ body,html {
   text-align: center;
   color: #2c3e50;
   height: 100%;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

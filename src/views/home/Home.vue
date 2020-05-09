@@ -1,6 +1,6 @@
 <template>
-  <div class="about">
-    <!--  -->
+  <div class="home">
+    <!-- 左侧导航栏 -->
     <div class="left">
       <div class="image">
         <img src="../../assets/logo.png" alt />
@@ -37,15 +37,20 @@
         <span @click="logOut">注销用户</span>
       </div>
     </div>
-    <!--  -->
+    <!-- 右侧视图 -->
     <div class="right">
+      <!-- 顶部标题 -->
       <div class="name">
-        <h3>{{title}}</h3>
+        <p>{{title}}</p>
+      </div>
+      <div class="add-icon">
         <van-button @click="add()" v-show="addbingli" type="primary" size="mini">添加病人</van-button>
       </div>
+      <!-- 中间视图 -->
       <div class="view">
         <router-view></router-view>
       </div>
+      <!-- 底部对话 -->
       <div class="nav-bar">
         <div class="icon">
           <van-icon name="star-o" />
@@ -64,7 +69,7 @@ export default {
     return {
       current: sessionStorage.getItem("active") || "/myPatient",
       title: sessionStorage.getItem("title") || "我的病人",
-      addbingli: sessionStorage.getItem('addbingli') || false
+      addbingli: sessionStorage.getItem("addbingli") || false
     };
   },
   computed: {
@@ -73,39 +78,46 @@ export default {
     }
   },
   // 监听地址栏路由的变化，修改左侧选项卡高亮状态
-  // watch: {
-  //   '$route'(to, from) {
-  //     if (to.path == "/one") {
-  //       this.current = to.path;
-  //       sessionStorage.setItem("active", to.path);
-  //       this.title = "我的病人";
-  //       sessionStorage.setItem("title", "我的病人");
-  //       this.addbingli = false;
-  //       sessionStorage.setItem("addbingli", false);
-  //     } else if (to.path == "/two") {
-  //       this.current = to.path;
-  //       sessionStorage.setItem("active", to.path);
-  //       this.title = "电子病历";
-  //       sessionStorage.setItem("title", "电子病历");
-  //       this.addbingli = true;
-  //       sessionStorage.setItem("addbingli", true);
-  //     } else if (to.path == "/three") {
-  //       this.current = to.path;
-  //       sessionStorage.setItem("active", to.path);
-  //       this.title = "住院管理";
-  //       sessionStorage.setItem("title", "住院管理");
-  //       this.addbingli = false;
-  //       sessionStorage.setItem("addbingli", false);
-  //     } else if (to.path == "/fore") {
-  //       this.current = to.path;
-  //       sessionStorage.setItem("active", to.path);
-  //       this.title = "报告查询";
-  //       sessionStorage.setItem("title", "报告查询");
-  //       this.addbingli = false;
-  //       sessionStorage.setItem("addbingli", false);
-  //     }
-  //   }
-  // },
+  watch: {
+    $route(to, from) {
+      if (to.path == "/myPatient") {
+        this.current = to.path;
+        sessionStorage.setItem("active", to.path);
+        this.title = "我的病人";
+        sessionStorage.setItem("title", "我的病人");
+        this.addbingli = false;
+        sessionStorage.setItem("addbingli", false);
+      } else if (to.path == "/emr") {
+        this.current = to.path;
+        sessionStorage.setItem("active", to.path);
+        this.title = "电子病历";
+        sessionStorage.setItem("title", "电子病历");
+        this.addbingli = true;
+        sessionStorage.setItem("addbingli", true);
+      } else if (to.path == "/inHosCon") {
+        this.current = to.path;
+        sessionStorage.setItem("active", to.path);
+        this.title = "住院管理";
+        sessionStorage.setItem("title", "住院管理");
+        this.addbingli = false;
+        sessionStorage.setItem("addbingli", false);
+      } else if (to.path == "/reportQuery") {
+        this.current = to.path;
+        sessionStorage.setItem("active", to.path);
+        this.title = "报告查询";
+        sessionStorage.setItem("title", "报告查询");
+        this.addbingli = false;
+        sessionStorage.setItem("addbingli", false);
+      } else if (to.path == "/outHosCon") {
+        this.current = to.path;
+        sessionStorage.setItem("active", to.path);
+        this.title = "出院管理";
+        sessionStorage.setItem("title", "出院管理");
+        this.addbingli = false;
+        sessionStorage.setItem("addbingli", false);
+      }
+    }
+  },
   methods: {
     logOut() {
       this.$store.dispatch("logOut").then(res => {
@@ -122,11 +134,9 @@ export default {
     add() {
       this.$router.push({
         name: "Add",
-        query: {
-          
-        }
+        query: {}
       });
-    },
+    }
   }
 };
 </script>
@@ -139,20 +149,22 @@ export default {
   margin: 0;
   padding: 0;
 }
-.about {
-  border-radius: 40px;
+.home {
+  /* border-radius: 40px; */
   height: 100%;
-  border: 2px solid #42b983;
+  /* border: 1px solid #42b983; */
   display: flex;
-  width: 90%;
-  height: 87%;
+  width: 99%;
+  height: 99%;
   margin: 0 auto;
+  background-image: url('../../assets/bg.jpg');
+  background-size: 100% 100%;
 }
 .left {
   height: 100%;
   width: 250px;
-  /* min-width: 250px; */
   position: relative;
+  background-color: rgba(255, 255, 255, .5);
 }
 .image {
   width: 100%;
@@ -195,42 +207,39 @@ export default {
 }
 .right {
   width: 100%;
-  /* min-width: 400px; */
   height: 100%;
-  border-left: 2px solid #42b983;
+  /* border-left: 2px solid #42b983; */
   position: relative;
 }
 .name {
-  position: absolute;
-  top: 2%;
-  left: 15%;
-  border-radius: 50px;
-  /* background-color: #42b982; */
-  /* box-shadow: 0 1px 4px 1px rgba(100, 100, 100, 0.8); */
+  margin-left: 100px;
+  float: left;
+  background-image: url('../../assets/title_bg.png');
+  background-size: 100% 90px;
   color: black;
   width: 200px;
-  height: 40px;
-  line-height: 40px;
+  height: 45px;
+  line-height: 45px;
+  font-weight: 600;
 }
-.name h3 {
+.add-icon {
   float: left;
+  margin-left: 10px;
+  margin-top: 15px;
 }
 .view {
   width: 95%;
   height: 80%;
-  /* border: 2px solid #42b983; */
   box-shadow: 1px 1px 10px 1px rgba(100, 100, 100, 0.8);
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 .nav-bar {
   width: 100%;
   height: 50px;
-  box-shadow: 0 -0.5px 4px 1px rgba(100, 100, 100, 0.8);
-  /* border-top: 1px solid #42b983; */
   position: absolute;
   bottom: 0;
-  border-bottom-right-radius: 40px;
+  background-color: rgba(255, 255, 255);
 }
 .icon {
   width: 100px;
